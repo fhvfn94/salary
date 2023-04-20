@@ -2,8 +2,11 @@ package com.salary.salary.Service;
 
 import com.salary.salary.Domain.Employee;
 import com.salary.salary.exception.EmployeeAlreadyAddedException;
+import com.salary.salary.exception.EmployeeNotFoundException;
 import com.salary.salary.exception.EmployeeStorageIsFullException;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class ArrayEmployeeService implements EmployeeService {
@@ -17,7 +20,7 @@ public class ArrayEmployeeService implements EmployeeService {
         }
         Employee temp = new Employee(firstName, lastName);
         for (Employee emp: staff) {
-            if (emp.equals(temp)) {
+            if (Objects.equals(emp, temp)) {
                 throw new EmployeeAlreadyAddedException();
             }
         }
@@ -28,11 +31,33 @@ public class ArrayEmployeeService implements EmployeeService {
 
     @Override
     public Employee removeEmployee(String firstName, String lastName) {
-        return null;
+        Employee temp = new Employee(firstName, lastName);
+        int i;
+        for (i = 0; i < currentSize; i++) {
+            if (staff[i].equals(temp)) {
+                break;
+            }
+        }
+        if (i == currentSize) {
+            throw new EmployeeNotFoundException();
+        }
+        /*for (int j = 0; j < currentSize - 1; j++) {
+            staff[j] = staff[j + 1];
+        }
+        currentSize--;*/
+        staff[i] = staff[currentSize - 1];
+        currentSize--;
+        return temp;
     }
 
     @Override
     public Employee findEmployee(String firstName, String lastName) {
-        return null;
+        Employee temp = new Employee(firstName, lastName);
+        for (var emp : staff) {
+            if (Objects.equals(emp, temp)) {
+                return emp;
+            }
+        }
+        throw new EmployeeNotFoundException();
     }
 }
