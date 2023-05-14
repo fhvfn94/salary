@@ -2,46 +2,52 @@ package com.salary.salary.Domain;
 
 import java.util.Objects;
 
-public class Employee {
-    private String firstName;
-    private String lastName;
+public abstract class Employee {
+    public static int counter = 1;
+    private final String name;
+    private final String surName;
+    private final String patronymicName;
+    private double salary;
+    private int department;
+    private final int id;
 
-    public Employee(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Employee(String name, String surName, String patronymicName, double salary, int department) {
+        id = counter++;
+        this.name = name;
+        this.surName = surName;
+        this.patronymicName = patronymicName;
+        this.salary = salary;
+        this.department = department;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setDepartment(int department) {
+        this.department = department;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getName() {
+        return name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getSurName() {
+        return surName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return firstName.equals(employee.firstName) && lastName.equals(employee.lastName);
+    public String getPatronymicName() {
+        return patronymicName;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(firstName, lastName);
+    public int getId() {
+        return id;
     }
 
-    @Override
-    public String toString() {
-        return "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'';
+    public int getDepartment() {
+        return department;
+    }
+    public double getSalary() {
+        return salary;
     }
 }
