@@ -1,5 +1,7 @@
 package com.salary.salary.Domain;
 
+import com.salary.salary.Service.EmployeeService;
+
 import java.util.*;
 
 public class EmployeeBook {
@@ -210,8 +212,8 @@ public class EmployeeBook {
             if (Objects.nonNull(employee)) {
                 System.out.println(
                         employee.getName() + " " +
-                        employee.getSurName() + " " +
-                        employee.getPatronymicName()
+                                employee.getSurName() + " " +
+                                employee.getPatronymicName()
                 );
             }
         }

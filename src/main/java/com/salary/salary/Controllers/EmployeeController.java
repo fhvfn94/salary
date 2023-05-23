@@ -2,10 +2,9 @@ package com.salary.salary.Controllers;
 
 import com.salary.salary.Domain.Employee;
 import com.salary.salary.Service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("employee")
@@ -24,20 +23,50 @@ public class EmployeeController {
     @GetMapping("/add")
     public Employee addEmployee(
             @RequestParam("firstName") String firstName,
-            @RequestParam("lastName") String lastName) {
-        return service.addEmployee(firstName, lastName);
+            @RequestParam("lastName") String lastName,
+            @RequestParam("patronymicName") String patronymicName,
+            @RequestParam("salary") Integer salary,
+            @RequestParam("department") Integer department) {
+        return service.addEmployee(firstName, lastName, patronymicName,  salary, department);
     }
 
     @GetMapping("/find")
     public Employee findEmployee(
             @RequestParam("firstName") String firstName,
-            @RequestParam("lastName") String lastName) {
-        return service.findEmployee(firstName, lastName);
+            @RequestParam("lastName") String lastName,
+            @RequestParam("patronymicName") String patronymicName,
+            @RequestParam("salary") Integer salary,
+            @RequestParam("department") Integer department) {
+        return service.findEmployee(firstName, lastName, patronymicName,  salary, department);
     }
+
     @GetMapping("/remove")
     public Employee removeEmployee(
             @RequestParam("firstName") String firstName,
-            @RequestParam("lastName") String lastName) {
-        return service.removeEmployee(firstName, lastName);
+            @RequestParam("lastName") String lastName,
+            @RequestParam("patronymicName") String patronymicName,
+            @RequestParam("salary") Integer salary,
+            @RequestParam("department") Integer department) {
+        return service.removeEmployee(firstName, lastName, patronymicName,  salary, department);
+    }
+
+    @GetMapping(path = "/departments/max-salary/{departmentId}")
+    public Employee findEmployeeWithMaxSalaryForDepartment(@PathVariable("departmentId") Integer departmentId) {
+        return service.findEmployeeWithMaxSalaryForDepartment(departmentId);
+    }
+
+    @GetMapping(path = "/departments/min-salary/{departmentId}")
+    public Employee findEmployeeWithMinSalaryForDepartment(@PathVariable("departmentId") Integer departmentId) {
+        return service.findEmployeeWithMinSalaryForDepartment(departmentId);
+    }
+
+    @GetMapping(path = "/departments/all/{departmentId}")
+    public List<Employee> findEmployeeByDepartment(@PathVariable("departmentId") Integer departmentId) {
+        return service.findEmployeeByDepartment(departmentId);
+    }
+
+    @GetMapping(path = "/departments/all")
+    public List<Employee> findEmployeeSortByDepartment() {
+        return service.findEmployeeSortByDepartment();
     }
 }

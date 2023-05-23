@@ -2,16 +2,18 @@ package com.salary.salary.Domain;
 
 import java.util.Objects;
 
-public abstract class Employee {
+public class Employee {
     public static int counter = 1;
     private final String name;
     private final String surName;
     private final String patronymicName;
-    private double salary;
-    private int department;
+    private Double salary;
+    private Integer department;
     private final int id;
 
-    public Employee(String name, String surName, String patronymicName, double salary, int department) {
+
+
+    public Employee(String name, String surName, String patronymicName, Double salary, Integer department) {
         id = counter++;
         this.name = name;
         this.surName = surName;
@@ -20,11 +22,11 @@ public abstract class Employee {
         this.department = department;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
 
-    public void setDepartment(int department) {
+    public void setDepartment(Integer department) {
         this.department = department;
     }
 
@@ -44,10 +46,10 @@ public abstract class Employee {
         return id;
     }
 
-    public int getDepartment() {
+    public Integer getDepartment() {
         return department;
     }
-    public double getSalary() {
+    public Double getSalary() {
         return salary;
     }
 }
