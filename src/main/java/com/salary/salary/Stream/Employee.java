@@ -1,6 +1,4 @@
-package com.salary.salary.Domain;
-
-import java.util.Objects;
+package com.salary.salary.Stream;
 
 public class Employee {
     public static int counter = 1;
