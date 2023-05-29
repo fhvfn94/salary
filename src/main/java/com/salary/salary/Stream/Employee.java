@@ -11,7 +11,7 @@ public class Employee {
 
 
 
-    public Employee(String name, String surName, String patronymicName, Double salary, Integer department) {
+    public Employee(String name, String surName) {
         id = counter++;
         this.name = name;
         this.surName = surName;

@@ -11,6 +11,19 @@ import java.util.stream.Collectors;
 @Service
 public class DepartmentService implements DepartmentServiceInt {
     private List<Employee> staff = new ArrayList<>();
+    private final ValidatorService validatorServices;
+    private String name;
+    private String surName;
+
+    public DepartmentService(ValidatorService validatorServices) {
+        this.validatorServices = validatorServices;
+    }
+
+
+    public Employee add(String name, String surName) {
+        Employee employee = new Employee(validatorServices.validateName(name), validatorServices.validateSurname(surName));
+    }
+
     @Override
     public Employee findEmployeeWithMaxSalaryForDepartment(Integer departmentId) {
         Optional<Employee> maxSalary = staff.stream()
@@ -40,4 +53,5 @@ public class DepartmentService implements DepartmentServiceInt {
                 .sorted((it1, it2) -> it1.getDepartment().compareTo(it2.getDepartment()))
                 .collect(Collectors.toList());
     }
+
 }
