@@ -49,7 +49,7 @@ public class RepEmployee {
     public String add(Integer idDepartment, Employee employee) {
         List<Employee> employees = map.get(idDepartment);
         if (employees != null && !employees.contains(employee)) {
-            map.get(employee.getDepartment()).add(new Employee(
+            employees.add(new Employee(
                     employee.getName(),
                     employee.getSurName(),
                     employee.getDepartment(),
@@ -63,7 +63,7 @@ public class RepEmployee {
     public String remove(Integer idDepartment, Employee employee) {
         List<Employee> employees = map.get(idDepartment);
         if (employees.contains(employee)) {
-            map.get(employee.getDepartment()).remove(employee);
+            employees.remove(employee);
             return "Сотрудник " + employee.getName() + " " + employee.getSurName() + " удален из департамента " + employee.getDepartment();
         }
         return "Такого сотрудника нет";

@@ -3,7 +3,6 @@ package com.salary.salary.Stream.module;
 import java.util.Objects;
 
 public class Employee {
-    public static int counter = 1;
     private final String name;
     private final String surName;
     private Double salary;
@@ -52,5 +51,14 @@ public class Employee {
     @Override
     public int hashCode() {
         return Objects.hash(name, surName);
+    }
+
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                ", salary=" + salary +
+                ", department=" + department +
+                '}';
     }
 }

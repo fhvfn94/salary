@@ -70,12 +70,6 @@ class TeamServiceImplTest {
                     new Employee("Марина", "Мариновна", idDepartment2, 17.0)
             )),
             idDepartment3, new ArrayList<Employee>(List.of(
-                new Employee("Игорь", "Игоревич", idDepartment3, 18.0),
-                    new Employee("Алексей", "Алексеевич", idDepartment3, 19.0),
-                    new Employee("Нина", "Нинович", idDepartment3, 20.0),
-                    new Employee("Мария", "Мариевич", idDepartment3, 21.0)
-            )),
-            idDepartment3, new ArrayList<Employee>(List.of(
                 new Employee("Игорь", "Игоревич", idDepartment3, 22.0),
                     new Employee("Алексей", "Алексеевич", idDepartment3, 23.0),
                     new Employee("Нина", "Нинович", idDepartment3, 24.0),
@@ -115,9 +109,25 @@ class TeamServiceImplTest {
     @Test
     public void getAllEmployeesByDepartment() {
         when(repEmployee.getAllEmployeesByDepartment(idDepartment2))
-                .thenReturn(repEmployee.getAllEmployeesByDepartment(idDepartment2));
+                .thenReturn(map.get(idDepartment2));
         List<Employee> result = departmentService.getAllEmployeesByDepartment(idDepartment2);
         assertEquals(repEmployee.getAllEmployeesByDepartment(idDepartment2), result);
+    }
+
+    @Test
+    public void getSumSalaryForDepartment() {
+        when(repEmployee.getSumSalaryForDepartment(idDepartment2))
+                .thenReturn(110.0);
+        Double result = departmentService.getSumSalaryForDepartment(idDepartment2);
+        assertEquals(repEmployee.getSumSalaryForDepartment(idDepartment2), result);
+    }
+
+    @Test
+    public void getMap() {
+        when(repEmployee.getMap())
+                .thenReturn(map.toString());
+        String result = departmentService.getMap();
+        assertEquals(repEmployee.getMap(), result);
     }
 
 
