@@ -1,23 +1,21 @@
-package com.salary.salary.Stream;
+package com.salary.salary.Stream.module;
+
+import java.util.Objects;
 
 public class Employee {
     public static int counter = 1;
     private final String name;
     private final String surName;
-    private final String patronymicName;
     private Double salary;
     private Integer department;
-    private final int id;
 
 
 
-    public Employee(String name, String surName) {
-        id = counter++;
+    public Employee(String name, String surName, Integer department, Double salary) {
         this.name = name;
         this.surName = surName;
-        this.patronymicName = patronymicName;
-        this.salary = salary;
         this.department = department;
+        this.salary = salary;
     }
 
     public void setSalary(Double salary) {
@@ -36,18 +34,23 @@ public class Employee {
         return surName;
     }
 
-    public String getPatronymicName() {
-        return patronymicName;
-    }
-
-    public int getId() {
-        return id;
-    }
 
     public Integer getDepartment() {
         return department;
     }
     public Double getSalary() {
         return salary;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(name, employee.name) && Objects.equals(surName, employee.surName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surName);
     }
 }
