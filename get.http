@@ -1,0 +1,28 @@
+#работает
+GET http://localhost:8080/departments/getAllEmployeesByDepartment/1
+#####
+
+#работает
+GET http://localhost:8080/departments/remove/1/Гриб/Грибов
+#####
+
+#работает
+GET http://localhost:8080/departments/add/1/Гриб/Грибов/17
+#####
+
+#работает
+GET http://localhost:8080/departments/find/1/Евгений/Евгеньевич
+#####
+
+#работает
+GET http://localhost:8080/departments/max-salary/2
+#####
+
+#работает
+GET http://localhost:8080/departments/sum-salary/4
+#####
+
+
+#работает
+GET http://localhost:8080/departments/all
+#####
